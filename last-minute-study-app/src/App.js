@@ -1,97 +1,118 @@
-import { useState, React } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 export default function App() {
-  const [section, setSection] = useState('home');
-  const [timeLeft, setTimeLeft] = useState(600);
+  const [page, setPage] = useState('home');
+  const [secondsLeft, setSecondsLeft] = useState(600);
+  const [isTiming, setIsTiming] = useState(false);
   const [quote, setQuote] = useState('');
-  const [showAnswer, setShowAnswer] = useState(false);
+  const [showAnswers, setShowAnswers] = useState(false);
 
-  const flashcards = [
-    { question: "what is Figma?", answer: "Design and prototyping tool" },
-    { question: "what is wireframe in figma?", answer: "simple layout showing app structure" },
-    { question: "why we need wireframe?", answer: "wireframes help visualize structure and guide user experience" }
+  const cards = [
+    { question: 'What is Figma?', answer: 'A design tool, like Photoshop but for UI/UX.' },
+    { question: 'What’s a wireframe?', answer: 'Just a rough sketch of a layout. No colors, no distractions.' },
+    { question: 'Why use wireframes?', answer: 'Because figuring out the structure early saves time later.' },
   ];
 
   const quotes = [
     "You're already behind, might as well keep going.",
-    "you’re trying. that’s enough i guess.",
+    "You're trying. That counts for something.",
     "It’s 2 AM. Do you know where your GPA is?",
-    "You miss 100% of the naps you don't take.",
+    "You miss 100% of the naps you don’t take.",
   ];
-  if (quote === '') {
-    setQuote(quotes[Math.floor(Math.random() * quotes.length)]);
+
+  // give a random quote on first load
+  useEffect(() => {
+    setQuote(pickQuote());
+  }, []);
+
+  // handle timer countdown
+  useEffect(() => {
+    if (!isTiming || secondsLeft <= 0) return;
+
+    const tick = setInterval(() => {
+      setSecondsLeft(prev => {
+        if (prev <= 1) {
+          clearInterval(tick);
+          setIsTiming(false);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(tick);
+  }, [isTiming, secondsLeft]);
+
+  function pickQuote() {
+    return quotes[Math.floor(Math.random() * quotes.length)];
   }
-  
 
   function startTimer() {
-    let timer = 600;
-    setTimeLeft(timer);
-    const interval = setInterval(() => {
-      timer -= 1;
-      setTimeLeft(timer);
-      if (timer <= 0) {
-        clearInterval(interval);
-      }
-    }, 999);
+    setSecondsLeft(600);
+    setIsTiming(true);
   }
 
   return (
-    <div>
-      <nav>
-        <button onClick={() => setSection('home')}>Home</button>
-        <button onClick={() => setSection('timer')}>Timer</button>
-        <button onClick={() => setSection('flashcards')}>Flashcards</button>
-        <button onClick={() => setSection('quotes')}>Quotes</button>
-        <button onClick={() => setSection('about')}>About</button>
-      </nav>
+    <div className="app">
+      <header>
+        <h1>Last Minute Study App</h1>
+        <nav>
+          {['home', 'timer', 'flashcards', 'quotes', 'about'].map(tab => (
+            <button key={tab} onClick={() => setPage(tab)}>
+              {tab[0].toUpperCase() + tab.slice(1)}
+            </button>
+          ))}
+        </nav>
+      </header>
 
       <main>
-        {section === 'home' && (
-          <div>
-            <h1> Last Minute Study App </h1>
-            <p>This app is made for students who are short on time but still want to get things done.</p>
-          </div>
+        {page === 'home' && (
+          <section>
+            <h2>Hey. Let’s get to it.</h2>
+            <p>This app is for students who meant to start earlier — but life happened.</p>
+            <p>We’ve got a timer, flashcards, and a few honest quotes. Let’s go.</p>
+          </section>
         )}
 
-        {section === 'timer' && (
-          <div>
+        {page === 'timer' && (
+          <section>
             <h2>Timer</h2>
-            <p>Time left: {timeLeft} seconds</p>
-            <button onClick={startTimer}>Start 10-min Timer</button>
-          </div>
+            <p>{secondsLeft} seconds left</p>
+            {!isTiming && <button onClick={startTimer}>Start 10-Minute Sprint</button>}
+            {isTiming && <p>Focus mode activated. No distractions.</p>}
+          </section>
         )}
 
-        {section === 'flashcards' && (
-          <div>
+        {page === 'flashcards' && (
+          <section>
             <h2>Flashcards</h2>
-            {flashcards.map((card, idx) => (
-              <div key={idx} style={{ marginBottom: '20px' }}>
+            {cards.map((card, i) => (
+              <div key={i} style={{ marginBottom: '1rem' }}>
                 <p><strong>Q:</strong> {card.question}</p>
-                {showAnswer && <p><strong>A:</strong> {card.answer}</p>}
+                {showAnswers && <p><strong>A:</strong> {card.answer}</p>}
               </div>
             ))}
-            <button onClick={() => setShowAnswer(!showAnswer)}>
-              {showAnswer ? 'Hide Answers' : 'Show Answers'}
+            <button onClick={() => setShowAnswers(prev => !prev)}>
+              {showAnswers ? 'Hide Answers' : 'Show Answers'}
             </button>
-          </div>
+          </section>
         )}
 
-        {section === 'quotes' && (
-          <div>
-            <h2>Motivational Quote</h2>
-            <p>{quote}</p>
-            <button onClick={() => {setQuote(quotes[Math.floor(Math.random() * quotes.length)]);}}>New Quote</button>
-          </div>
+        {page === 'quotes' && (
+          <section>
+            <h2>Today’s Vibe</h2>
+            <blockquote>{quote}</blockquote>
+            <button onClick={() => setQuote(pickQuote())}>Hit me with another</button>
+          </section>
         )}
 
-        {section === 'about' && (
-          <div>
-            <h2>About This App</h2>
-            <p>This app is built for students who need to make the most of their last minute study time With a timer, flash cards, and daily quotes, 
-              it's all about helping you stay focused, motivated, and ready even when time is tight.</p>
-             <p>Created by </p>
-          </div>
+        {page === 'about' && (
+          <section>
+            <h2>About</h2>
+            <p>This was thrown together by someone who knows the struggle of cramming at the last minute.</p>
+            <p>No fluff. Just tools to help you survive the grind.</p>
+          </section>
         )}
       </main>
     </div>
