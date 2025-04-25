@@ -12,7 +12,7 @@ export default function App() {
     { 
       question: 'What is Figma?', 
       answer: 'A design tool, like Photoshop but for UI/UX.', 
-      image: 'https://example.com/figma-image.jpg' 
+      image: '/src/figma.png' 
     },
     { 
       question: 'What’s a wireframe?', 
