@@ -3,7 +3,7 @@ import './App.css';
 
 function App() {
   const [page, setPage] = useState('home');
-  const [count, setCount] = useState(5);
+  const [count, setCount] = useState(100);
   const [showAns, setShowAns] = useState(false);
 
   const quotes = [
@@ -14,9 +14,9 @@ function App() {
   ];
 
   const flashcards = [
-    { q: "what's js", a: "coding language i think" },
-    { q: "html purpose?", a: "boxes and stuff" },
-    { q: "css is for?", a: "making it not ugly" }
+    { q: "what is Figma?", a: "Design and prototyping tool" },
+    { q: "what is wireframe in figma?", a: "simple layout showing app structure" },
+    { q: "why we need wireframe?", a: "wireframes help visualize structure and guide user experience" }
   ];
 
   const runTimer = () => {
