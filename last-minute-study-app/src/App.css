@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
   background-color: #f5f5f5;
   margin: 0;
   padding: 0;
@@ -7,23 +7,37 @@ body {
 
 nav {
   background-color: #222;
-  padding: 10px;
+  padding: 15px 30px;
   display: flex;
-  gap: 10px;
   justify-content: center;
+  gap: 20px;
+  border-radius: 8px;
 }
 
 nav button {
   background: #444;
   color: white;
   border: none;
-  padding: 10px 15px;
+  padding: 12px 20px;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 nav button:hover {
   background: #666;
+  transform: translateY(-3px);
+}
+
+nav button:active {
+  background: #555;
+  transform: translateY(1px);
+}
+
+nav button:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
 }
 
 main {
