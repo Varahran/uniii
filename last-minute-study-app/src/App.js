@@ -32,16 +32,15 @@ export default function App() {
   const quotes = [
     "You're already behind, might as well keep going.",
     "You're trying. That counts for something.",
-    "It’s 2 AM. Do you know where your GPA is?",
     "You miss 100% of the naps you don’t take.",
   ];
 
-  // give a random quote on first load
+
   useEffect(() => {
     setQuote(pickQuote());
   }, []);
 
-  // handle timer countdown
+
   useEffect(() => {
     if (!isTiming || secondsLeft <= 0) return;
 
