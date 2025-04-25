@@ -102,17 +102,19 @@ export default function App() {
         {page === 'flashcards' && (
           <section>
             <h2>Flashcards</h2>
-            {cards.map((card, i) => (
-              <div key={i} className="flashcard">
-                <p className="flashcard-question"><strong>Q:</strong> {card.question}</p>
-                {showAnswers && <p className="flashcard-answer"><strong>A:</strong> {card.answer}</p>}
-                <img 
-                  src={card.image} 
-                  alt={`Flashcard: ${card.question}`} 
-                  className="flashcard-img" 
-                />
-              </div>
-            ))}
+            <div className="flashcard-container">
+              {cards.map((card, i) => (
+                <div key={i} className="flashcard">
+                  <img 
+                    src={card.image} 
+                    alt={`Flashcard: ${card.question}`} 
+                    className="flashcard-img" 
+                  />
+                  <p className="flashcard-question"><strong>Q:</strong> {card.question}</p>
+                  {showAnswers && <p className="flashcard-answer"><strong>A:</strong> {card.answer}</p>}
+                </div>
+              ))}
+            </div>
             <button 
               onClick={() => setShowAnswers(prev => !prev)}
               className="toggle-answers-btn"
