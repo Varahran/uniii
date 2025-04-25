@@ -20,7 +20,7 @@ function App() {
   ];
 
   const runTimer = () => {
-    let t = 5;
+    let t = 100;
     setCount(t);
     let i = setInterval(() => {
       t -= 1;
@@ -42,14 +42,15 @@ function App() {
       <div style={{ padding: '20px', margin: "0 auto", maxWidth: "800px", background: '#fff' }}>
         {page == 'home' && (
           <>
-            <h1>study app lol</h1>
-            <p>not sure what this does but it's here</p>
+            <h1>No time for Study app</h1>
+            <p>This app is made for students who are short on time but still want to get things done.
+               Whether you're cramming before class, brushing up during a break, or just need a little motivation to get started</p>
           </>
         )}
 
         {page == 'timer' && (
           <>
-            <h2>5 sec timer</h2>
+            <h2>100 sec timer </h2>
             <button onClick={runTimer}>go</button>
             <p>{count > 0 ? count + ' sec' : 'done'}</p>
           </>
