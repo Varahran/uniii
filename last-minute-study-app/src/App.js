@@ -8,9 +8,10 @@ function App() {
 
   const quotes = [
     "you’re trying. that’s enough i guess.",
-    "productivity is fake.",
-    "google it, idk.",
-    "you should’ve started earlier lol"
+    "“The best way to predict your future is to create it.” – Abraham Lincoln",
+    "Tell me and I forget, teach me and I may remember, involve me and I learn.",
+    "The journey is the reward."
+    "There is no substitute for hard work."
   ];
 
   const flashcards = [
