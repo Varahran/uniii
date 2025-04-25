@@ -108,7 +108,7 @@ button:hover {
   margin: 10px auto;
   display: block;
   padding: 10px 20px;
-  background-color: #28a745;
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 3px;
@@ -116,7 +116,7 @@ button:hover {
 }
 
 .toggle-answers-btn:hover {
-  background-color: #218838;
+  background-color: #0056b3;
 }
 
 blockquote {
