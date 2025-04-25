@@ -8,9 +8,9 @@ export default function App() {
   const [showAnswer, setShowAnswer] = useState(false);
 
   const flashcards = [
-    { q: "what is Figma?", a: "Design and prototyping tool" },
-    { q: "what is wireframe in figma?", a: "simple layout showing app structure" },
-    { q: "why we need wireframe?", a: "wireframes help visualize structure and guide user experience" }
+    { question: "what is Figma?", answer: "Design and prototyping tool" },
+    { question: "what is wireframe in figma?", answer: "simple layout showing app structure" },
+    { question: "why we need wireframe?", answer: "wireframes help visualize structure and guide user experience" }
   ];
 
   const quotes = [
