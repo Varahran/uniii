@@ -136,7 +136,7 @@ export default function App() {
             <h2>About</h2>
             <p>This was thrown together by someone who knows the struggle of cramming at the last minute.</p>
             <p>No fluff. Just tools to help you survive the grind.</p>
-            <p>Created By Seyed Arshia</p>
+            <p>Created By Seyed Arshia Mofidi</p>
           </section>
         )}
       </main>
