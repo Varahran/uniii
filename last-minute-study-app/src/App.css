@@ -76,7 +76,7 @@ button:hover {
 }
 
 .flashcard-img {
-  max-width: 100%;
+  width: 300px;
   height: auto;
   border-radius: 4px;
   margin-bottom: 0.5rem;
