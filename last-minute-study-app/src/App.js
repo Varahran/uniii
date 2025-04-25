@@ -8,14 +8,14 @@ export default function App() {
   const [showAnswer, setShowAnswer] = useState(false);
 
   const flashcards = [
-    { question: 'What is React?', answer: 'A JavaScript library for building user interfaces.' },
-    { question: 'What is a component?', answer: 'A reusable piece of UI.' },
-    { question: 'What is state?', answer: 'An object to hold data that can change over time.' },
+    { q: "what is Figma?", a: "Design and prototyping tool" },
+    { q: "what is wireframe in figma?", a: "simple layout showing app structure" },
+    { q: "why we need wireframe?", a: "wireframes help visualize structure and guide user experience" }
   ];
 
   const quotes = [
     "You're already behind, might as well keep going.",
-    "Cry now, pass later.",
+    "you’re trying. that’s enough i guess.",
     "It’s 2 AM. Do you know where your GPA is?",
     "You miss 100% of the naps you don't take.",
   ];
@@ -33,7 +33,7 @@ export default function App() {
       if (timer <= 0) {
         clearInterval(interval);
       }
-    }, 1000);
+    }, 999);
   }
 
   return (
@@ -49,8 +49,8 @@ export default function App() {
       <main>
         {section === 'home' && (
           <div>
-            <h1>Last-Minute Study App</h1>
-            <p>Fake it till you make it.</p>
+            <h1> Last Minute Study App </h1>
+            <p>This app is made for students who are short on time but still want to get things done.</p>
           </div>
         )}
 
@@ -88,7 +88,9 @@ export default function App() {
         {section === 'about' && (
           <div>
             <h2>About This App</h2>
-            <p>Made by someone who should be studying instead of coding this app.</p>
+            <p>This app is built for students who need to make the most of their last minute study time With a timer, flash cards, and daily quotes, 
+              it's all about helping you stay focused, motivated, and ready even when time is tight.</p>
+             <p>Created by </p>
           </div>
         )}
       </main>
