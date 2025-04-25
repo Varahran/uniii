@@ -1,0 +1,93 @@
+import { useState } from 'react';
+import './App.css';
+
+function App() {
+  const [page, setPage] = useState('home');
+  const [count, setCount] = useState(5);
+  const [showAns, setShowAns] = useState(false);
+
+  const quotes = [
+    "you’re trying. that’s enough i guess.",
+    "productivity is fake.",
+    "google it, idk.",
+    "you should’ve started earlier lol"
+  ];
+
+  const flashcards = [
+    { q: "what's js", a: "coding language i think" },
+    { q: "html purpose?", a: "boxes and stuff" },
+    { q: "css is for?", a: "making it not ugly" }
+  ];
+
+  const runTimer = () => {
+    let t = 5;
+    setCount(t);
+    let i = setInterval(() => {
+      t -= 1;
+      setCount(t);
+      if (t <= 0) clearInterval(i);
+    }, 999);
+  };
+
+  return (
+    <div className="App">
+      <div style={{ padding: '10px', background: '#222', margin: "0 auto", maxWidth: "800px", textAlign: "center" }}>
+        <button onClick={() => setPage('home')}>home</button>
+        <button onClick={() => setPage('timer')}>timer</button>
+        <button onClick={() => setPage('cards')}>cards</button>
+        <button onClick={() => setPage('quote')}>quote</button>
+        <button onClick={() => setPage('about')}>about</button>
+      </div>
+
+      <div style={{ padding: '20px', margin: "0 auto", maxWidth: "800px", background: '#fff' }}>
+        {page == 'home' && (
+          <>
+            <h1>study app lol</h1>
+            <p>not sure what this does but it's here</p>
+          </>
+        )}
+
+        {page == 'timer' && (
+          <>
+            <h2>5 sec timer</h2>
+            <button onClick={runTimer}>go</button>
+            <p>{count > 0 ? count + ' sec' : 'done'}</p>
+          </>
+        )}
+
+        {page == 'cards' && (
+          <>
+            <h2>flash cards?</h2>
+            {flashcards.map((f, idx) => (
+              <div key={idx} style={{ marginBottom: 10 }}>
+                <p><b>Q:</b> {f.q}</p>
+                {showAns && <p><b>A:</b> {f.a}</p>}
+              </div>
+            ))}
+            <button onClick={() => setShowAns(!showAns)}>
+              {showAns ? 'hide' : 'show'} answers
+            </button>
+          </>
+        )}
+
+        {(page == 'quote' || page == 'quote2') && (
+          <>
+            <h2>random quote</h2>
+            <p>{quotes[Math.floor(Math.random() * quotes.length)]}</p>
+            <button onClick={() => setPage(page == 'quote' ? 'quote2' : 'quote')}>try another</button>
+          </>
+        )}
+
+        {page == 'about' && (
+          <>
+            <h2>about</h2>
+            <p>made this in like 3 hours. maybe less. idk.</p>
+            <p>pls pass me anyway</p>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default App;
