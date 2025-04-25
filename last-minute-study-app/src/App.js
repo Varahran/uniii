@@ -9,21 +9,9 @@ export default function App() {
   const [showAnswers, setShowAnswers] = useState(false);
 
   const cards = [
-    { 
-      question: 'What is Figma?', 
-      answer: 'A design tool, like Photoshop but for UI/UX.', 
-      image: '/src/figma.png' 
-    },
-    { 
-      question: 'What’s a wireframe?', 
-      answer: 'Just a rough sketch of a layout. No colors, no distractions.', 
-      image: 'https://example.com/wireframe-image.jpg' 
-    },
-    { 
-      question: 'Why use wireframes?', 
-      answer: 'Because figuring out the structure early saves time later.', 
-      image: 'https://example.com/structure-image.jpg' 
-    },
+    { question: 'What is Figma?', answer: 'A design tool, like Photoshop but for UI/UX.' },
+    { question: 'What’s a wireframe?', answer: 'Just a rough sketch of a layout. No colors, no distractions.' },
+    { question: 'Why use wireframes?', answer: 'Because figuring out the structure early saves time later.' },
   ];
 
   const quotes = [
@@ -102,7 +90,6 @@ export default function App() {
             {cards.map((card, i) => (
               <div key={i} style={{ marginBottom: '1rem' }}>
                 <p><strong>Q:</strong> {card.question}</p>
-                {card.image && <img src={card.image} alt={`Flashcard for ${card.question}`} style={{ width: '100px', height: '100px', objectFit: 'cover' }} />}
                 {showAnswers && <p><strong>A:</strong> {card.answer}</p>}
               </div>
             ))}
