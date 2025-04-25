@@ -82,8 +82,9 @@ function App() {
         {page == 'about' && (
           <>
             <h2>about</h2>
-            <p>made this in like 3 hours. maybe less. idk.</p>
-            <p>pls pass me anyway</p>
+            <p>This app is built for students who need to make the most of their last minute study time With a timer, flash cards, and daily quotes, 
+              it's all about helping you stay focused, motivated, and ready even when time is tight.</p>
+            <p>Created by </p>
           </>
         )}
       </div>
