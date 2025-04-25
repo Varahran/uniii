@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import figmaImage from './figma.jpg';
+import wireframeImage from './wireframe.jpg';
+import wireframe2Image from './wireframe2.jpg';
 
 export default function App() {
   const [page, setPage] = useState('home');
@@ -10,17 +13,17 @@ export default function App() {
 
   const cards = [
     { 
-      image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80', 
+      image: figmaImage, 
       question: 'What is Figma?', 
       answer: 'A design tool, like Photoshop but for UI/UX.' 
     },
     { 
-      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80', 
+      image: wireframeImage, 
       question: 'What’s a wireframe?', 
       answer: 'Just a rough sketch of a layout. No colors, no distractions.' 
     },
     { 
-      image: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80', 
+      image: wireframe2Image, 
       question: 'Why use wireframes?', 
       answer: 'Because figuring out the structure early saves time later.' 
     },
