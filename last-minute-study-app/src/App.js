@@ -11,14 +11,17 @@ export default function App() {
   const cards = [
     { 
       image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80', 
+      question: 'What is Figma?', 
       answer: 'A design tool, like Photoshop but for UI/UX.' 
     },
     { 
       image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80', 
+      question: 'What’s a wireframe?', 
       answer: 'Just a rough sketch of a layout. No colors, no distractions.' 
     },
     { 
       image: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80', 
+      question: 'Why use wireframes?', 
       answer: 'Because figuring out the structure early saves time later.' 
     },
   ];
@@ -100,10 +103,11 @@ export default function App() {
               <div key={i} className="flashcard">
                 <img 
                   src={card.image} 
-                  alt={`Flashcard ${i + 1}`} 
+                  alt={`Flashcard: ${card.question}`} 
                   className="flashcard-img" 
                 />
-                {showAnswers && <p className="flashcard-answer">A: {card.answer}</p>}
+                <p className="flashcard-question"><strong>Q:</strong> {card.question}</p>
+                {showAnswers && <p className="flashcard-answer"><strong>A:</strong> {card.answer}</p>}
               </div>
             ))}
             <button 
